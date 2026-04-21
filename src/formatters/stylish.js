@@ -5,8 +5,6 @@ const stylish = (differences) => {
         return `  + ${diff.key}: ${diff.value}`;
       case 'removed':
         return `  - ${diff.key}: ${diff.value}`;
-      case 'changed':
-        return `  - ${diff.key}: ${diff.value1}\n  + ${diff.key}: ${diff.value2}`;
       case 'unchanged':
         return `    ${diff.key}: ${diff.value}`;
       default:

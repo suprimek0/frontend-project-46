@@ -1,27 +1,23 @@
+import _ from 'lodash';
+
 const compare = (data1, data2) => {
-  const keys1 = new Set(Object.keys(data1));
-  const keys2 = new Set(Object.keys(data2));
-  const allKeys = new Set([...keys1, ...keys2]);
-  const result = [];
+  const allKeys = _.sortBy([...new Set([...Object.keys(data1), ...Object.keys(data2)])]);
 
-  for (const key of allKeys) {
+  return allKeys.map((key) => {
     if (!(key in data1)) {
-      result.push({ key, type: 'added', value: data2[key] });
-    } else if (!(key in data2)) {
-      result.push({ key, type: 'removed', value: data1[key] });
-    } else if (data1[key] !== data2[key]) {
-      result.push({
-        key,
-        type: 'changed',
-        value1: data1[key],
-        value2: data2[key]
-      });
-    } else {
-      result.push({ key, type: 'unchanged', value: data1[key] });
+      return { key, type: 'added', value: data2[key] };
     }
-  }
-
-  return result;
+    if (!(key in data2)) {
+      return { key, type: 'removed', value: data1[key] };
+    }
+    if (data1[key] !== data2[key]) {
+      return [
+        { key, type: 'removed', value: data1[key] },
+        { key, type: 'added', value: data2[key] }
+      ];
+    }
+    return { key, type: 'unchanged', value: data1[key] };
+  }).flat();
 };
 
 export default compare;
