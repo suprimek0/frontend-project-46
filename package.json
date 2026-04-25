@@ -8,7 +8,10 @@
     "gendiff": "gendiff.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -26,10 +29,15 @@
     "lodash": "^4.18.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.2",
     "@eslint/create-config": "^1.11.0",
     "@eslint/js": "^10.0.1",
     "@stylistic/eslint-plugin": "^5.10.0",
+    "babel-jest": "^30.3.0",
     "eslint": "^10.2.1",
-    "globals": "^17.5.0"
+    "globals": "^17.5.0",
+    "jest": "^30.3.0",
+    "sonar-scanner": "^3.1.0"
   }
 }
