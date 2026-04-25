@@ -1,6 +1,9 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/suprimek0/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/suprimek0/frontend-project-46/actions)
 
+[![Node.js CI](https://github.com/suprimek0/frontend-project-46/actions/workflows/ci.yml/badge.svg)](https://github.com/suprimek0/frontend-project-46/actions/workflows/ci.yml)
+[![Test Coverage](https://sonarcloud.io/api/project_badges/measure?project=suprimek0_frontend-project-46&metric=coverage)](https://sonarcloud.io/summary/new_code?id=suprimek0_frontend-project-46)
+
 # Gendiff
 
 Утилита для сравнения двух конфигурационных файлов (JSON) и отображения различий.
