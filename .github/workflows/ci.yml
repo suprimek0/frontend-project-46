@@ -1,0 +1,46 @@
+
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run linting
+      run: npm run lint
+
+    - name: Run tests
+      run: npm test
+
+    - name: Test coverage and SonarQube Scan
+      run: |
+        npm run test -- --coverage
+        npx sonar-scanner \
+          -Dsonar.projectKey=suprimek0_frontend-project-46 \
+          -Dsonar.organization=suprimek0 \
+          -Dsonar.sources=. \
+          -Dsonar.tests=__tests__ \
+          -Dsonar.test.inclusions=__tests__/** \
+          -Dsonar.coverage.exclusions=**/*.test.js \
+          -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
