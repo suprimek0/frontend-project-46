@@ -1,3 +1,4 @@
+
 import js from '@eslint/js';
 import globals from 'globals';
 
@@ -10,6 +11,7 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.node,
+        ...globals.jest, // добавляем глобальные переменные Jest
       },
     },
     rules: {
