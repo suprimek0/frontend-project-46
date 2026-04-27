@@ -68,3 +68,31 @@
   * **json** — структурированный машиночитаемый вывод.
 * Использование популярной библиотеки `commander.js` для построения консольной утилиты.
 * Автоматизированное тестирование с помощью фреймворка **Jest**.
+
+## Использование
+
+Основная команда:
+
+```bash
+gendiff [options] <filepath1> <filepath2>
+
+### Поддерживаемые опции
+
+* `-f, --format <type>` — формат вывода (`stylish` по умолчанию, `plain`, `json`);
+* `-V, --version` — показать версию;
+* `-h, --help` — показать справку.
+
+### Примеры использования 
+
+Сравнение JSON‑файлов (формат stylish, по умолчанию)
+
+```bash
+gendiff file1.json file2.json
+
+Cравнение YAML‑файлов с указанием формата `plain`**
+```bash
+gendiff --format plain file1.yml file2.yaml
+
+Сравнение JSON и YAML с выводом в формате `json`**
+```bash
+gendiff --format json file1.json file1.yaml
