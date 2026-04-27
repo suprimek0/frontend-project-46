@@ -7,60 +7,64 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=suprimek0_frontend-project-46&metric=coverage)](https://sonarcloud.io/summary/new_code?id=suprimek0_frontend-project-46)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=suprimek0_frontend-project-46&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=suprimek0_frontend-project-46)
 
+# Вычислитель отличий (gendiff)
 
-# Gendiff
-
-Утилита для сравнения двух конфигурационных файлов (JSON) и отображения различий.
-
-
-## Пример работы
-
-<a href="https://asciinema.org/a/8xdsgUupFbZrTdH1" target="_blank">
-  <img src="https://asciinema.org/a/8xdsgUupFbZrTdH1.svg" alt="Демонстрация работы gendiff">
-</a>
-
-<a href="https://asciinema.org/a/DNPjd8JSOSK8GId9" target="_blank">
-  <img src="https://asciinema.org/a/DNPjd8JSOSK8GId9.svg" />
-</a>
-
-<a href="https://asciinema.org/a/te4QfjApa9FAOfK5" target="_blank">
-<img src="https://asciinema.org/a/te4QfjApa9FAOfK5.svg" />
-</a>
-
-Демонстрация показывает сравнение двух YAML‑файлов и вывод различий с пометками:
-* `-` — удалённые значения;
-* `+` — добавленные значения.
-
+Консольная утилита для сравнения двух конфигурационных файлов и отображения различий между ними.
 
 ## Описание
 
-Программа читает два JSON‑файла, сравнивает их содержимое и выводит различия в удобном формате. Поддерживает несколько форматов вывода.
+**Вычислитель отличий** — программа, определяющая разницу между двумя структурами данных. Это популярная задача, для решения которой существует множество онлайн‑сервисов.
 
-**Основные возможности:**
-* чтение JSON‑файлов из указанных путей;
-* сравнение объектов с определением:
-  * добавленных ключей (`added`);
-  * удалённых ключей (`removed`);
-  * изменённых значений (`changed`);
-  * неизменных ключей (`unchanged`);
-* вывод результатов в разных форматах:
-  * `stylish` — красивый формат с символами `+`/`−`;
-  * `json` — структурированный JSON с отступами.
+Подобный механизм используется:
+* при выводе результатов тестов;
+* для автоматического отслеживания изменений в конфигурационных файлах;
+* в системах контроля версий;
+* при анализе настроек приложений.
 
-## Установка
- 1. Клонируйте репозиторий:
-   ```bash
-   git clone https://github.com/ваш-username/frontend-project-46.git
-2. Перейдите в папку проекта:
+## Демонстрация работы
 
-    ```bash
-    cd frontend-project-46
-3. Установите зависимости (если есть):
+<table border="0" cellpadding="10">
+  <tr>
+    <td align="center">
+      <a href="https://asciinema.org/a/8xdsgUupFbZrTdH1" target="_blank">
+        <img src="https://asciinema.org/a/8xdsgUupFbZrTdH1.svg" alt="Сравнение плоских YAML‑файлов" width="350">
+      </a>
+      <br><strong>Шаг 1. YAML‑файлы</strong>
+      <br>Базовое сравнение плоских структур
+    </td>
+    <td align="center">
+      <a href="https://asciinema.org/a/DNPjd8JSOSK8GId9" target="_blank">
+        <img src="https://asciinema.org/a/DNPjd8JSOSK8GId9.svg" alt="Рекурсивное сравнение JSON" width="350">
+      </a>
+      <br><strong>Шаг 2. Вложенные структуры</strong>
+      <br>Работа с рекурсивными объектами
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="https://asciinema.org/a/te4QfjApa9FAOfK5" target="_blank">
+        <img src="https://asciinema.org/a/te4QfjApa9FAOfK5.svg" alt="Формат вывода plain" width="350">
+      </a>
+      <br><strong>Шаг 3. Формат plain</strong>
+      <br>Текстовый вывод для логирования
+    </td>
+    <td align="center">
+      <a href="https://asciinema.org/a/nb5rpVmYfN5pL8Yu" target="_blank">
+        <img src="https://asciinema.org/a/nb5rpVmYfN5pL8Yu.svg" alt="Формат вывода JSON" width="350">
+      </a>
+      <br><strong>Шаг 4. Формат JSON</strong>
+      <br>Структурированный вывод для интеграции
+    </td>
+  </tr>
+</table>
 
-    ```bash
-    npm install
 
-## Использование
-Запустите программу с указанием путей к двум JSON-файлам:
-    ```bash
-    node gendiff.js file1.json file2.json
+## Возможности
+
+* Поддержка разных входных форматов: **JSON**, **YAML**.
+* Генерация отчёта в нескольких форматах:
+  * **plain** — текстовый формат с описанием изменений;
+  * **stylish** — древовидное представление с индикаторами (`+`, `-`);
+  * **json** — структурированный машиночитаемый вывод.
+* Использование популярной библиотеки `commander.js` для построения консольной утилиты.
+* Автоматизированное тестирование с помощью фреймворка **Jest**.
