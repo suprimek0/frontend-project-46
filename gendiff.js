@@ -4,6 +4,7 @@ import { program } from 'commander';
 import parse from './src/parsers.js';
 import compare from './src/comparator.js';
 import stylish from './src/formatters/stylish.js';
+import plain from './src/formatters/plain.js';
 
 program
   .name('gendiff')
@@ -22,10 +23,13 @@ program.action((filepath1, filepath2, options) => {
     switch (options.format) {
       case 'stylish':
         output = stylish(differences);
-        break;
+      break;
+      case 'plain': // добавляем поддержку plain
+        output = plain(differences);
+      break;
       case 'json':
         output = JSON.stringify(differences, null, 2);
-        break;
+      break;
       default:
         output = `Unsupported format: ${options.format}`;
     }
