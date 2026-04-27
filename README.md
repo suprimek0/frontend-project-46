@@ -15,15 +15,16 @@
 
 ## Пример работы
 
-Посмотрите демонстрацию работы пакета `gendiff` для плоских структур:
-
 <a href="https://asciinema.org/a/8xdsgUupFbZrTdH1" target="_blank">
   <img src="https://asciinema.org/a/8xdsgUupFbZrTdH1.svg" alt="Демонстрация работы gendiff">
 </a>
 
-Посмотрите демонстрацию работы пакета `gendiff` для вложенных структур:
 <a href="https://asciinema.org/a/DNPjd8JSOSK8GId9" target="_blank">
   <img src="https://asciinema.org/a/DNPjd8JSOSK8GId9.svg" />
+</a>
+
+<a href="https://asciinema.org/a/te4QfjApa9FAOfK5" target="_blank">
+<img src="https://asciinema.org/a/te4QfjApa9FAOfK5.svg" />
 </a>
 
 Демонстрация показывает сравнение двух YAML‑файлов и вывод различий с пометками:
