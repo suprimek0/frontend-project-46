@@ -3,8 +3,7 @@
 import { program } from 'commander';
 import parse from './src/parsers.js';
 import compare from './src/comparator.js';
-import stylish from './src/formatters/stylish.js';
-import plain from './src/formatters/plain.js';
+import getFormatter from './src/formatters/index.js'; // подключаем фабрику форматтеров
 
 program
   .name('gendiff')
@@ -19,20 +18,9 @@ program.action((filepath1, filepath2, options) => {
     const data2 = parse(filepath2);
     const differences = compare(data1, data2);
 
-    let output;
-    switch (options.format) {
-      case 'stylish':
-        output = stylish(differences);
-      break;
-      case 'plain': // добавляем поддержку plain
-        output = plain(differences);
-      break;
-      case 'json':
-        output = JSON.stringify(differences, null, 2);
-      break;
-      default:
-        output = `Unsupported format: ${options.format}`;
-    }
+    // Используем фабрику для получения нужного форматтера
+    const format = getFormatter(options.format);
+    const output = format(differences);
 
     console.log(output);
   } catch (error) {
